@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sukrit Thanakhun — Graphic Designer & Marketing Coordinator</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0e0e0c;--bg2:#181815;--bg3:#222220;--bg4:#2a2a27;
+  --text:#f0ede8;--text2:#a8a49e;--text3:#6a6860;
+  --accent:#F0997B;--accent2:#D85A30;
+  --border:rgba(255,255,255,0.08);
+  --nav:#0e0e0cee;
+}
+html,body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;line-height:1.6;font-size:15px;min-height:100vh}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:var(--nav);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:54px}
+.nav-logo{font-size:13px;font-weight:600;letter-spacing:.06em;color:#fff;cursor:pointer;background:none;border:none;font-family:'Poppins',sans-serif}
+.nav-links{display:flex;align-items:center}
+.nav-links button{appearance:none;background:transparent;border:none;outline:none;color:#fff;font-size:12.5px;font-family:'Poppins',sans-serif;font-weight:400;padding:8px 16px;cursor:pointer;position:relative;opacity:.6;transition:opacity .2s}
+.nav-links button:hover{opacity:1}
+.nav-links button::after{content:'';position:absolute;bottom:2px;left:16px;right:16px;height:1.5px;background:var(--accent);transform:scaleX(0);transition:transform .25s;transform-origin:center}
+.nav-links button.active{opacity:1;font-weight:500}
+.nav-links button.active::after{transform:scaleX(1)}
+.menu-toggle{display:none;background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer}
+
+/* BACK TO TOP */
+#btt{position:fixed;bottom:24px;right:24px;z-index:300;width:42px;height:42px;border-radius:50%;background:var(--accent2);border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+#btt.show{opacity:1;transform:translateY(0)}
+#btt:hover{background:var(--accent)}
+
+/* PAGES */
+.page{max-width:860px;margin:0 auto;padding:3.5rem 2rem;min-height:60vh;display:none;animation:pageIn .35s ease}
+.page.active-page{display:block}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.section-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;font-weight:500}
+.section-title{font-size:1.4rem;font-weight:600;color:var(--text);margin-bottom:1.8rem;letter-spacing:-.01em}
+.section-divider{height:0.5px;background:var(--border);margin:3rem 0}
+
+/* HERO */
+.hero-block{display:grid;grid-template-columns:1fr 220px;gap:2.5rem;align-items:start}
+.hero-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem;font-weight:500}
+.hero-name{font-size:clamp(2rem,4.5vw,2.8rem);font-weight:600;line-height:1.15;color:var(--text);margin-bottom:.4rem;letter-spacing:-.02em}
+.hero-title{font-size:12px;font-weight:400;color:var(--accent);margin-bottom:.9rem;letter-spacing:.06em;text-transform:uppercase}
+.hero-bio{font-size:12.5px;color:var(--text2);margin-bottom:1.4rem;line-height:1.8;font-weight:300}
+.hero-stats{display:flex;gap:1.3rem;margin-bottom:1.4rem;flex-wrap:wrap}
+.stat-num{font-size:1.3rem;font-weight:600;color:var(--accent);line-height:1}
+.stat-label{font-size:9px;color:var(--text3);margin-top:2px;text-transform:uppercase;letter-spacing:.06em;text-align:center}
+.hero-cta{display:flex;gap:9px;flex-wrap:wrap}
+.btn-primary{background:var(--accent2);color:#fff;border:none;border-radius:6px;padding:10px 18px;font-size:12px;font-weight:500;cursor:pointer;transition:background .2s;font-family:'Poppins',sans-serif}
+.btn-primary:hover{background:var(--accent)}
+.btn-outline{background:none;color:var(--text2);border:0.5px solid var(--border);border-radius:6px;padding:10px 18px;font-size:12px;cursor:pointer;transition:all .2s;font-family:'Poppins',sans-serif}
+.btn-outline:hover{background:var(--bg3);color:var(--text)}
+
+/* PROFILE */
+.profile-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:16px;padding:1.4rem;display:flex;flex-direction:column;align-items:center;gap:.75rem;text-align:center}
+.profile-photo-wrap{width:104px;height:104px;border-radius:50%;border:2px solid var(--accent2);overflow:hidden;background:var(--bg3);display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer}
+.profile-photo-wrap:hover .upload-overlay{opacity:1}
+.upload-overlay{position:absolute;inset:0;background:rgba(216,90,48,.75);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;border-radius:50%}
+.upload-overlay span{font-size:9px;color:#fff;margin-top:2px;font-weight:500}
+.profile-initials{font-size:1.8rem;font-weight:600;color:var(--accent)}
+.profile-img-el{width:100%;height:100%;object-fit:cover;display:none}
+.profile-name{font-size:13px;font-weight:600;color:var(--text)}
+.profile-role{font-size:10px;color:var(--text3);font-weight:300;line-height:1.5}
+.profile-location{font-size:10.5px;color:var(--text2);display:flex;align-items:center;gap:4px}
+.profile-contact{width:100%;display:flex;flex-direction:column;gap:4px;margin-top:.2rem}
+.profile-contact a{font-size:11px;color:var(--text2);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s;padding:5px 8px;border-radius:6px}
+.profile-contact a:hover{color:var(--accent);background:var(--bg3)}
+.profile-badges{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}
+.profile-badge{font-size:10px;padding:2px 9px;border-radius:20px;border:0.5px solid var(--border);color:var(--text3)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:9px}
+.skill-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:.85rem 1rem}
+.skill-card-title{font-size:10px;font-weight:600;color:var(--text3);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.08em}
+.skill-pills{display:flex;flex-wrap:wrap;gap:5px}
+.skill-pill{font-size:11px;padding:3px 9px;border-radius:20px;background:var(--bg3);border:0.5px solid var(--border);color:var(--text2);font-weight:300}
+
+/* EXPERIENCE */
+.exp-list{display:flex;flex-direction:column;gap:1.1rem}
+.exp-item{display:grid;grid-template-columns:105px 1fr;gap:1.4rem;padding-bottom:1.1rem;border-bottom:0.5px solid var(--border)}
+.exp-item:last-child{border-bottom:none;padding-bottom:0}
+.exp-year{font-size:11px;color:var(--text3);padding-top:3px;font-weight:300;line-height:1.5}
+.exp-role{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:2px}
+.exp-company{font-size:11.5px;color:var(--accent);margin-bottom:.4rem;font-weight:500}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:3px}
+.exp-bullets li{font-size:12px;color:var(--text2);font-weight:300;padding-left:14px;position:relative;line-height:1.6}
+.exp-bullets li::before{content:'—';position:absolute;left:0;color:var(--text3)}
+.bh{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;background:rgba(240,153,123,.12);color:var(--accent);font-weight:500;margin-left:4px}
+
+/* PORTFOLIO 6-GRID */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cat-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .2s,border-color .2s;position:relative;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem}
+.cat-card:hover{transform:translateY(-4px);border-color:var(--accent2)}
+.cat-card:hover .cat-hover-overlay{opacity:1}
+.cat-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;transition:opacity .3s}
+.cat-card:hover .cat-cover{opacity:.3}
+.cat-bg{position:absolute;inset:0;background:var(--bg3)}
+.cat-hover-overlay{position:absolute;inset:0;background:rgba(216,90,48,.15);opacity:0;transition:opacity .2s}
+.cat-icon{position:relative;z-index:2;font-size:2rem;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.7)}
+.cat-label{position:relative;z-index:2;font-size:13px;font-weight:600;color:#fff;letter-spacing:.04em;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.cat-count{position:relative;z-index:2;font-size:10px;color:rgba(255,255,255,.65);font-weight:300}
+.cat-badge-wip{position:absolute;top:10px;right:10px;z-index:3;background:rgba(0,0,0,.55);border:0.5px solid rgba(255,255,255,.18);border-radius:20px;padding:3px 9px;font-size:10px;color:rgba(255,255,255,.6)}
+
+/* GALLERY POPUP */
+#gallery-popup{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.92);backdrop-filter:blur(10px);overflow-y:auto}
+#gallery-popup.open{display:block;animation:fadeIn .2s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.gp-header{position:sticky;top:0;z-index:10;background:rgba(14,14,12,.94);backdrop-filter:blur(14px);border-bottom:0.5px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+.gp-title-wrap{display:flex;align-items:center;gap:10px}
+.gp-title{font-size:14px;font-weight:600;color:var(--text)}
+.gp-count{font-size:11px;color:var(--text3);background:var(--bg3);border:0.5px solid var(--border);border-radius:20px;padding:2px 10px}
+.gp-close{background:none;border:0.5px solid var(--border);border-radius:6px;padding:6px 14px;font-size:12px;color:var(--text2);cursor:pointer;font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:5px;transition:all .2s}
+.gp-close:hover{background:var(--accent2);border-color:var(--accent2);color:#fff}
+.gp-body{max-width:920px;margin:0 auto;padding:2rem}
+
+/* Masonry auto-grid */
+.gp-masonry{columns:3;column-gap:10px}
+.gp-masonry img{width:100%;display:block;border-radius:8px;margin-bottom:10px;cursor:zoom-in;transition:opacity .15s;break-inside:avoid}
+.gp-masonry img:hover{opacity:.85}
+
+/* WIP state */
+.gp-wip{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;gap:.8rem;color:var(--text3)}
+.gp-wip i{font-size:3rem;color:var(--bg4)}
+.gp-wip p{font-size:13px}
+
+/* Loading skeleton */
+.gp-loading{display:flex;align-items:center;justify-content:center;min-height:300px;gap:8px;color:var(--text3);font-size:12px}
+
+/* IMAGE ZOOM */
+#img-zoom{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.96);align-items:center;justify-content:center;cursor:zoom-out}
+#img-zoom.open{display:flex;animation:fadeIn .15s ease}
+#img-zoom img{max-width:94vw;max-height:94vh;object-fit:contain;border-radius:6px;cursor:default}
+#zoom-close{position:absolute;top:16px;right:20px;background:rgba(255,255,255,.1);border:0.5px solid rgba(255,255,255,.2);border-radius:6px;padding:6px 12px;color:#fff;font-size:12px;cursor:pointer;font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:5px;transition:background .2s}
+#zoom-close:hover{background:rgba(216,90,48,.7)}
+
+/* CONTACT */
+.contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:2.5rem}
+.contact-intro{font-size:12.5px;color:var(--text2);line-height:1.8;margin-bottom:1.2rem;font-weight:300}
+.contact-links{display:flex;flex-direction:column;gap:.5rem}
+.contact-link{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--text2);text-decoration:none;transition:color .2s;padding:4px 0}
+.contact-link:hover{color:var(--accent)}
+.contact-link i{font-size:15px;color:var(--accent2)}
+.contact-form{display:flex;flex-direction:column;gap:9px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.form-group{display:flex;flex-direction:column;gap:4px}
+.form-group label{font-size:10.5px;color:var(--text3)}
+.form-group input,.form-group textarea,.form-group select{background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;padding:8px 11px;font-size:12px;color:var(--text);font-family:'Poppins',sans-serif;resize:none;transition:border-color .2s;outline:none;font-weight:300}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--accent2)}
+.form-group select option{background:var(--bg2)}
+.form-group textarea{height:85px}
+.form-submit{background:var(--accent2);color:#fff;border:none;border-radius:6px;padding:10px;font-size:12px;font-weight:500;cursor:pointer;transition:background .2s;font-family:'Poppins',sans-serif}
+.form-submit:hover{background:var(--accent)}
+.success-msg{display:none;background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;padding:1rem;text-align:center;color:var(--text2);font-size:12px}
+
+footer{border-top:0.5px solid var(--border);padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;color:var(--text3);font-size:11px;max-width:860px;margin:0 auto;flex-wrap:wrap;gap:6px}
+
+@media(max-width:640px){
+  .hero-block{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .gp-masonry{columns:2}
+  .contact-wrap,.form-row{grid-template-columns:1fr}
+  .exp-item{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .nav-links.show{display:flex;position:absolute;top:54px;left:0;right:0;background:var(--nav);backdrop-filter:blur(16px);flex-direction:column;padding:.5rem 0;border-bottom:0.5px solid var(--border)}
+  .nav-links.show button{padding:12px 2rem;text-align:left}
+  .menu-toggle{display:block}
+}
+</style>
+</head>
+<body>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <i class="ti ti-arrow-up"></i>
+</button>
+
+<!-- GALLERY POPUP -->
+<div id="gallery-popup" role="dialog" aria-modal="true">
+  <div class="gp-header">
+    <div class="gp-title-wrap">
+      <div class="gp-title" id="gp-title">Portfolio</div>
+      <div class="gp-count" id="gp-count">0 works</div>
+    </div>
+    <button class="gp-close" onclick="closeGallery()">
+      <i class="ti ti-x"></i> Close
+    </button>
+  </div>
+  <div class="gp-body" id="gp-body"></div>
+</div>
+
+<!-- ZOOM -->
+<div id="img-zoom" onclick="closeZoom()">
+  <button id="zoom-close" onclick="closeZoom()"><i class="ti ti-x"></i> Close</button>
+  <img id="zoom-img" alt="" onclick="event.stopPropagation()">
+</div>
+
+<nav>
+  <button class="nav-logo" onclick="goToPage('about')">SUKRIT THANAKHUN</button>
+  <div class="nav-links" id="nav-links">
+    <button onclick="goToPage('about')" data-page="about">About</button>
+    <button onclick="goToPage('portfolio')" data-page="portfolio">Portfolio</button>
+  </div>
+  <button class="menu-toggle" onclick="toggleMenu()"><i class="ti ti-menu-2"></i></button>
+</nav>
+
+<!-- ABOUT PAGE -->
+<div class="page active-page" id="page-about" data-page="about">
+
+  <div class="hero-block">
+    <div>
+      <p class="hero-eyebrow">6+ Years of Experience</p>
+      <h1 class="hero-name">Sukrit<br>Thanakhun</h1>
+      <p class="hero-title">Graphic Designer &amp; Marketing Coordinator</p>
+      <p class="hero-bio">Specializes in high-conversion e-commerce assets for Shopee, Lazada, and TikTok Shop — product listings, hero images, infographics, and brand storefronts. Proven track record delivering campaigns on time with measurable results.</p>
+      <div class="hero-stats">
+        <div><div class="stat-num">6+</div><div class="stat-label">Years Exp.</div></div>
+        <div><div class="stat-num">25%</div><div class="stat-label">Engagement ↑</div></div>
+        <div><div class="stat-num">50+</div><div class="stat-label">Assets/Year</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">On-time Rate</div></div>
+      </div>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="goToPage('portfolio')"><i class="ti ti-eye" style="font-size:12px;vertical-align:-2px;margin-right:5px"></i>View Portfolio</button>
+        <button class="btn-outline" onclick="document.getElementById('contact-anchor').scrollIntoView({behavior:'smooth'})"><i class="ti ti-mail" style="font-size:12px;vertical-align:-2px;margin-right:5px"></i>Contact Me</button>
+      </div>
+    </div>
+    <div>
+      <div class="profile-card">
+        <div class="profile-photo-wrap" onclick="document.getElementById('photo-input').click()">
+          <span class="profile-initials" id="initials-el">ST</span>
+          <img id="profile-img-el" class="profile-img-el" alt="Profile">
+          <div class="upload-overlay"><i class="ti ti-camera" style="font-size:20px;color:#fff"></i><span>Upload</span></div>
+        </div>
+        <input type="file" id="photo-input" style="display:none" accept="image/*" onchange="handlePhoto(event)">
+        <div class="profile-name">Sukrit Thanakhun</div>
+        <div class="profile-role">Graphic Designer &amp; Marketing Coordinator</div>
+        <div class="profile-location"><i class="ti ti-map-pin" style="font-size:11px;color:var(--accent2)"></i>Bangkok, Thailand</div>
+        <div class="profile-contact">
+          <a href="tel:0923827170"><i class="ti ti-phone"></i>092-382-7170</a>
+          <a href="mailto:sukrit.thk@gmail.com"><i class="ti ti-mail"></i>sukrit.thk@gmail.com</a>
+          <a href="#"><i class="ti ti-brand-linkedin"></i>LinkedIn Profile</a>
+          <a href="#"><i class="ti ti-brand-behance"></i>Behance Portfolio</a>
+        </div>
+        <div class="profile-badges">
+          <span class="profile-badge">Thai — Fluent</span>
+          <span class="profile-badge">English — Inter.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <p class="section-label">Core Competencies</p>
+  <h2 class="section-title">Skills &amp; Tools</h2>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="skill-card-title">Design Tools</div><div class="skill-pills"><span class="skill-pill">Photoshop</span><span class="skill-pill">Illustrator</span><span class="skill-pill">InDesign</span><span class="skill-pill">Premiere Pro</span><span class="skill-pill">Figma</span><span class="skill-pill">Canva</span></div></div>
+    <div class="skill-card"><div class="skill-card-title">E-Commerce</div><div class="skill-pills"><span class="skill-pill">Shopee</span><span class="skill-pill">Lazada</span><span class="skill-pill">TikTok Shop</span><span class="skill-pill">Hero Images</span><span class="skill-pill">Infographics</span><span class="skill-pill">A+ Content</span></div></div>
+    <div class="skill-card"><div class="skill-card-title">Marketing</div><div class="skill-pills"><span class="skill-pill">Campaign Mgmt</span><span class="skill-pill">Content Strategy</span><span class="skill-pill">Meta Ads</span><span class="skill-pill">Social Media</span><span class="skill-pill">Brand Guidelines</span></div></div>
+    <div class="skill-card"><div class="skill-card-title">Workflow</div><div class="skill-pills"><span class="skill-pill">Project Mgmt</span><span class="skill-pill">Team Leadership</span><span class="skill-pill">Notion</span><span class="skill-pill">Trello</span><span class="skill-pill">Client Comms</span></div></div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <p class="section-label">Work Experience</p>
+  <h2 class="section-title">Career History</h2>
+  <div class="exp-list">
+    <div class="exp-item"><span class="exp-year">Apr 2023 —<br>Present</span><div><div class="exp-role">Marketing &amp; Project Coordinator <span style="font-weight:300;color:var(--text3);font-size:12px">(Graphic Designer)</span></div><div class="exp-company">FIMIQ CO., LTD.</div><ul class="exp-bullets"><li>Designed e-commerce assets for Shopee, Lazada, and TikTok Shop — product listings, hero visuals, infographics, and promotional banners</li><li>Led and coordinated marketing campaigns across digital channels<span class="bh">100% on-time</span></li><li>Managed 5–10 concurrent projects under tight deadlines with zero critical issues</li><li>Oversaw 50+ marketing asset productions including key visuals and broadcast graphics</li><li>Supported 20+ live streaming sessions with zero critical issues</li><li>Maintained brand consistency contributing to<span class="bh">+25% engagement</span></li></ul></div></div>
+    <div class="exp-item"><span class="exp-year">2022 — 2023</span><div><div class="exp-role">Marketing Coordinator <span style="font-weight:300;color:var(--text3);font-size:12px">(Graphic Designer)</span></div><div class="exp-company">ATIVA WELLNESS CO., LTD.</div><ul class="exp-bullets"><li>Coordinated campaign planning and execution contributing to<span class="bh">+15% website traffic</span></li><li>Designed 30+ online marketing materials and video content aligned with brand guidelines</li><li>Created weekly performance reports and competitor analysis</li></ul></div></div>
+    <div class="exp-item"><span class="exp-year">2021 — 2022</span><div><div class="exp-role">Project Coordinator / Production Support <span style="font-weight:300;color:var(--text3);font-size:12px">(Graphic Designer)</span></div><div class="exp-company">WEST GARMENT 2011 CO., LTD.</div><ul class="exp-bullets"><li>Coordinated between clients and production team ensuring on-time delivery of 100+ projects</li><li>Designed product graphics, packaging mockups, and e-commerce visuals</li><li>Improved workflow efficiency by<span class="bh">+20%</span></li></ul></div></div>
+    <div class="exp-item"><span class="exp-year">2020 — 2021</span><div><div class="exp-role">Graphic Designer</div><div class="exp-company">LEK UMBRELLA CO., LTD.</div><ul class="exp-bullets"><li>Designed product visuals and packaging mockups for multiple product lines</li><li>Supported quotation preparation and print control, reducing revision time by<span class="bh">−15%</span></li></ul></div></div>
+    <div class="exp-item"><span class="exp-year">2019 — 2020</span><div><div class="exp-role">Graphic Designer</div><div class="exp-company">SIBSAN PRINTING CO., LTD.</div><ul class="exp-bullets"><li>Designed print media and branding materials for clients</li><li>Managed printing process to ensure quality and on-time delivery</li></ul></div></div>
+    <div class="exp-item"><span class="exp-year">2020 — Present</span><div><div class="exp-role">Freelance Graphic Designer</div><div class="exp-company">Book Layout &amp; Editorial Design</div><ul class="exp-bullets"><li>Designed and typeset books, magazines, and editorial publications using Adobe InDesign</li><li>Managed end-to-end layout production — from manuscript to print-ready files</li></ul></div></div>
+  </div>
+
+  <div class="section-divider" id="contact-anchor"></div>
+
+  <p class="section-label">Get In Touch</p>
+  <h2 class="section-title">Let's Work Together</h2>
+  <div class="contact-wrap">
+    <div>
+      <p class="contact-intro">Open for new projects, freelance work, or full-time opportunities. E-commerce design, marketing campaigns, or project coordination — let's talk!</p>
+      <div class="contact-links">
+        <a class="contact-link" href="tel:0923827170"><i class="ti ti-phone"></i>092-382-7170</a>
+        <a class="contact-link" href="mailto:sukrit.thk@gmail.com"><i class="ti ti-mail"></i>sukrit.thk@gmail.com</a>
+        <a class="contact-link" href="#"><i class="ti ti-map-pin"></i>Bangkok, Thailand</a>
+        <a class="contact-link" href="#"><i class="ti ti-brand-behance"></i>Behance Portfolio</a>
+        <a class="contact-link" href="#"><i class="ti ti-brand-linkedin"></i>LinkedIn</a>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form" id="cform">
+        <div class="form-row">
+          <div class="form-group"><label>Name</label><input type="text" placeholder="Your name" id="fname"></div>
+          <div class="form-group"><label>Email</label><input type="email" placeholder="email@example.com" id="femail"></div>
+        </div>
+        <div class="form-group"><label>Project Type</label>
+          <select id="ftype"><option value="">Select type...</option><option>E-Commerce Design</option><option>Marketing Campaign</option><option>Brand Identity</option><option>Editorial / Print</option><option>Project Coordination</option><option>Other</option></select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Tell me about your project..." id="fmsg"></textarea></div>
+        <button class="form-submit" onclick="submitForm()">Send Message <i class="ti ti-send" style="font-size:12px;vertical-align:-1px;margin-left:4px"></i></button>
+      </div>
+      <div class="success-msg" id="smsg"><i class="ti ti-check" style="color:var(--accent)"></i> Message sent! I'll get back to you within 24 hours.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PORTFOLIO PAGE -->
+<div class="page" id="page-portfolio" data-page="portfolio">
+  <p class="section-label">Selected Works</p>
+  <h2 class="section-title">Portfolio</h2>
+  <div class="cat-grid" id="cat-grid"></div>
+</div>
+
+<footer>
+  <span>&#169; 2025 Sukrit Thanakhun &middot; Bangkok, Thailand</span>
+  <span>Graphic Designer &amp; Marketing Coordinator</span>
+</footer>
+
+<script>
+/* ─── CONFIG ─── */
+const CATS = [
+  { key:'cosmetics', label:'Cosmetics',   icon:'ti-sparkles',      folder:'cosmetics' },
+  { key:'muaythai',  label:'Muay Thai',   icon:'ti-shield-filled', folder:'muaythai'  },
+  { key:'diecut',    label:'Diecut',      icon:'ti-cut',           folder:'diecut'    },
+  { key:'ecom',      label:'E-Commerce',  icon:'ti-shopping-cart', folder:'ecom'      },
+  { key:'poster',    label:'Poster',      icon:'ti-layout-2',      folder:'poster'    },
+  { key:'other',     label:'Other',       icon:'ti-dots-circle-horizontal', folder:'other' },
+];
+
+/* images.json loaded once at startup */
+let IMG_MAP = {};   /* key → ['img01.jpg', ...] */
+
+async function loadConfig(){
+  try{
+    const r = await fetch('images.json');
+    IMG_MAP = await r.json();
+  }catch(e){
+    IMG_MAP = {};
+  }
+  renderCatGrid();
+}
+
+/* ─── CATEGORY GRID ─── */
+function renderCatGrid(){
+  const grid = document.getElementById('cat-grid');
+  grid.innerHTML = '';
+  CATS.forEach(cat => {
+    const files = IMG_MAP[cat.key] || [];
+    const hasImages = files.length > 0;
+    const coverSrc = hasImages ? `images/${cat.folder}/${files[Math.floor(files.length/2)]}` : null;
+
+    const card = document.createElement('div');
+    card.className = 'cat-card';
+    card.innerHTML = `
+      ${coverSrc
+        ? `<img class="cat-cover" src="${coverSrc}" alt="${cat.label}" loading="lazy">`
+        : `<div class="cat-bg"></div>`}
+      <div class="cat-hover-overlay"></div>
+      ${!hasImages ? '<span class="cat-badge-wip">Coming Soon</span>' : ''}
+      <i class="cat-icon ti ${cat.icon}"></i>
+      <div class="cat-label">${cat.label}</div>
+      <div class="cat-count">${hasImages ? files.length + ' works' : 'In progress'}</div>
+    `;
+    card.onclick = () => openGallery(cat, files);
+    grid.appendChild(card);
+  });
+}
+
+/* ─── GALLERY POPUP ─── */
+function openGallery(cat, files){
+  document.getElementById('gp-title').textContent = cat.label;
+  const body = document.getElementById('gp-body');
+
+  if(files.length === 0){
+    document.getElementById('gp-count').textContent = 'Coming soon';
+    body.innerHTML = `
+      <div class="gp-wip">
+        <i class="ti ${cat.icon}"></i>
+        <p>${cat.label} portfolio coming soon.</p>
+      </div>`;
+  } else {
+    document.getElementById('gp-count').textContent = `${files.length} works`;
+    /* Build masonry — all images in one scrollable popup */
+    const masonry = document.createElement('div');
+    masonry.className = 'gp-masonry';
+    files.forEach((fname, i) => {
+      const img = document.createElement('img');
+      img.src = `images/${cat.folder}/${fname}`;
+      img.alt = `${cat.label} ${i + 1}`;
+      img.loading = 'lazy';
+      img.onclick = () => openZoom(`images/${cat.folder}/${fname}`);
+      masonry.appendChild(img);
+    });
+    body.innerHTML = '';
+    body.appendChild(masonry);
+  }
+
+  const popup = document.getElementById('gallery-popup');
+  popup.classList.add('open');
+  popup.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGallery(){
+  document.getElementById('gallery-popup').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ─── ZOOM ─── */
+function openZoom(src){
+  document.getElementById('zoom-img').src = src;
+  document.getElementById('img-zoom').classList.add('open');
+}
+function closeZoom(){
+  document.getElementById('img-zoom').classList.remove('open');
+  document.getElementById('zoom-img').src = '';
+}
+
+/* ─── NAV / PAGE ─── */
+function goToPage(name){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+  document.getElementById('page-' + name).classList.add('active-page');
+  document.querySelectorAll('.nav-links button[data-page]').forEach(b =>
+    b.classList.toggle('active', b.dataset.page === name));
+  window.scrollTo({top:0, behavior:'smooth'});
+  document.getElementById('nav-links').classList.remove('show');
+}
+
+function toggleMenu(){
+  document.getElementById('nav-links').classList.toggle('show');
+}
+
+function handlePhoto(e){
+  const file = e.target.files[0]; if(!file) return;
+  const r = new FileReader();
+  r.onload = ev => {
+    const img = document.getElementById('profile-img-el');
+    img.src = ev.target.result; img.style.display = 'block';
+    document.getElementById('initials-el').style.display = 'none';
+  };
+  r.readAsDataURL(file);
+}
+
+function submitForm(){
+  const n = document.getElementById('fname').value.trim();
+  const e = document.getElementById('femail').value.trim();
+  if(!n || !e){ alert('Please fill in your name and email.'); return; }
+  document.getElementById('cform').style.display = 'none';
+  document.getElementById('smsg').style.display = 'block';
+}
+
+/* ─── SCROLL ─── */
+window.addEventListener('scroll', () =>
+  document.getElementById('btt').classList.toggle('show', window.scrollY > 300));
+
+/* ─── KEYBOARD ─── */
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    if(document.getElementById('img-zoom').classList.contains('open')) closeZoom();
+    else if(document.getElementById('gallery-popup').classList.contains('open')) closeGallery();
+  }
+});
+
+/* ─── INIT ─── */
+loadConfig();
+goToPage('about');
+</script>
+</body>
+</html>
